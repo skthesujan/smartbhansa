@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
 
-function App() {
+import Header from "./Header/Header";
+import Home from "./Home/Home";
+import About from "./About/About";
+import Menu from "./Menu/Menu";
+import Testimonial from "./Testimonials/Testimonial";
+import Contact from "./Contact/Contact";
+import Footer from "./Footer/Footer";
+import { FaArrowAltCircleUp } from "react-icons/fa";
+
+import "./App.scss";
+
+const App = () => {
+  const topOfThePagehander = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <FaArrowAltCircleUp
+        className="Top-of-the-page"
+        onClick={topOfThePagehander}
+      />
+
+      <Route path="/" component={Header} />
+      <Route path="/" component={Home} />
+      <Route path="/" component={About} />
+      <Route path="/" component={Menu} />
+      <Route path="/" component={Testimonial} />
+      <Route path="/" component={Contact} />
+      <Route path="/" component={Footer} />
+      <Redirect to="/" />
     </div>
   );
-}
+};
 
 export default App;
